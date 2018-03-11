@@ -30,5 +30,6 @@ def take_picture_test():
     try:
         camera.capture(image_name)
     except Exception:
+        print("Ran into camera error")
         camera.close()
         camera.init()
