@@ -27,4 +27,8 @@ def take_picture():
 
 def take_picture_test():
     image_name = "test.jpg"
-    camera.capture(image_name)
+    try:
+        camera.capture(image_name)
+    except Exception:
+        camera.close()
+        camera.init()
