@@ -17,6 +17,7 @@ while p == 0:
             camera.take_picture()
         except Exception:
             camera.close()
+            print("Ran into camera problem.")
             camera.init()
         movement.forward(tf)
     elif key_press == 'd':
@@ -25,6 +26,7 @@ while p == 0:
             camera.take_picture()
         except Exception:
             camera.close()
+            print("Ran into camera problem.")
             camera.init()
         movement.right(tf)
     elif key_press == 'a':
@@ -33,6 +35,7 @@ while p == 0:
             camera.take_picture()
         except Exception:
             camera.close()
+            print("Ran into camera problem.")
             camera.init()
         movement.left(tf)
     elif key_press == 't':
@@ -41,6 +44,7 @@ while p == 0:
             camera.take_picture()
         except Exception:
             camera.close()
+            print("Ran into camera problem.")
             camera.init()
     elif key_press == 'p':
         p = 1
