@@ -3,7 +3,7 @@ import movement as m
 p = 0
 tf = 1.6
 while p == 0:
-        a = raw_input('')
+        a = input('')  # previously raw_input()
 
         if a == 'w':
                 m.forward(tf)
@@ -14,4 +14,4 @@ while p == 0:
         if a == 'a':
                 m.left(tf)
         if a == 'p':
-                p = 1
+                m.left(tf)

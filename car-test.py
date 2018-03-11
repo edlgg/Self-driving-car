@@ -1,3 +1,4 @@
+"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -13,21 +14,19 @@ import tensorflow as tf
 
 import RPi.GPIO as gpio
 import movement
-import movement-test as movement2
 import camera
-import cv2
 
-            
+
 graph_file="optimized_graph.pb"
-    
+
 # Loads label file, strips off carriage return
-label_lines = [line.rstrip() for line in tf.gfile.GFile("retrained_labels.txt")]
+label_lines = [line.rstrip() for lin in tf.gfile.GFile("retrained_labels.txt")]
 
 # Unpersists graph from file
 graph = tf.Graph()
 with graph.as_default():
     graph_def = tf.GraphDef()
-    
+
     with tf.gfile.FastGFile(graph_file, 'rb') as f:
         graph_def.ParseFromString(f.read())
 
@@ -39,13 +38,13 @@ with tf.Session(graph=graph) as sess:
     tf = 1
     movement.init()
     camera.init()
-    
+
     while p == 0:
         camera.take_picture_test()
 
         # Read in the image_data
         image_path="test.jpg"
-            
+
         image = Image.open(image_path)
         image = np.array(image, dtype=np.float32)
 
@@ -53,18 +52,18 @@ with tf.Session(graph=graph) as sess:
         softmax_tensor = graph.get_tensor_by_name('final_result:0')
 
         start_time = timeit.default_timer()
-        predictions = sess.run(softmax_tensor, 
+        predictions = sess.run(softmax_tensor,
                 {'Cast:0': image})
         elapsed = timeit.default_timer() - start_time
-        print('Elapsed time: %f\n' % elapsed)    
-            
+        print('Elapsed time: %f\n' % elapsed)
+
         # Sort to show labels of first prediction in order of confidence
         top_k = predictions[0].argsort()[-len(predictions[0]):][::-1]
 
         prediction = label_lines[0]
         movement.end()
-	gpio.cleanup()
-	movement.init()
+    gpio.cleanup()
+    movement.init()
         if prediction == 'w':
             print('w')
             movement2.forward()
@@ -86,4 +85,4 @@ with tf.Session(graph=graph) as sess:
             gpio.cleanup()
             break
 
-        
+"""
