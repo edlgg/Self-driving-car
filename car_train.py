@@ -26,8 +26,8 @@ while p == 0:
         camera.take_picture()
 
         movement.left(tf)
-    elif key_press == 't':
-        os.chdir('/home/pi/Documents/Self-driving-car-all/images/test')
+    elif key_press == 'q':
+        os.chdir('/home/pi/Documents/Self-driving-car-all/images/q')
         camera.take_picture()
 
     elif key_press == 'p':
