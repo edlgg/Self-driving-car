@@ -2,9 +2,9 @@
 # self-driving-car
  
 ## Introduction
-  For the first month of my summer vacations I wanted to do a small project to learn about machine learning. I came upon some videos of people making their own self driving cars. I decided that I would make my own self driving car eventough I had almost no knowledge of electronics, machine learning, tensor flow, python, etc.
+  For the first month of my summer holidays I wanted to do a small project to learn about machine learning. I came upon some videos of people making their own self driving cars. I decided that I would make my own eventough I had almost no knowledge of electronics, machine learning, tensor flow, or python.
  
-  I built the car myself from scratch. I bought some motors, a raspberry pi, a camera, and a bunch of other things. I combined youtube, udemy, and other sources to learn about the different parts of the project. I divided the project into the following steps to make it easier to handle in my head. 
+  I built the car myself from scratch. I bought some motors, a raspberry pi, a camera, and a bunch of other things. I combined youtube, udemy, , coursera and other sources to learn about the different parts of the project. I divided the project into the following steps to make it easier to handle in my head.
         
    1. Build car
    2. Implement car movement
@@ -29,7 +29,7 @@
 <img src="https://github.com/edlgg/Self-driving-car/blob/master/images/README_images/20170616_201821.jpg" width="400" height="500"><img src="https://github.com/edlgg/Self-driving-car/blob/master/images/README_images/20180310_194621.jpg" width="400" height="500">
  
 ### 2. Implement Car Movement
-   Before starting this proyect I didnt know anything about the Raspberry Pi so I used [this Udemy course](https://www.udemy.com/from-0-to-1-raspberry-pi/learn/v4/overview) to learn how to use LED's, Proximity sensors, temperature sensors, etc. After I got used to the Pi I implemented the car movement. Since the GPIO pins on the PI are are digital (either 1 or 0) and sometimes I needed the motors to work at lower speeds I used pulse width modulation to more precisely control the movement of the car. PWM is when you decrease the duty cycle of the motor so it moves slower by turning it on and off very quickly in the proportions that you need. After that I just connected to my Pi via SSH to give the commands.
+   Before starting the proyect I didnt know anything about the Raspberry Pi so I used [this Udemy course](https://www.udemy.com/from-0-to-1-raspberry-pi/learn/v4/overview) to learn how to use LED's, Proximity sensors and temperature sensors. After I got used to the Pi I implemented the car movement. Since the GPIO pins on the PI are are digital (either 1 or 0) and sometimes I needed the motors to work at lower speeds I used pulse width modulation to more precisely control the movement of the car. PWM is when you decrease the duty cycle of the motor so it moves slower by turning it on and off very quickly in the proportions that you need. After that I just connected to my Pi via SSH to give the commands.
   I wasn't able to control the car using wasd controls via the command line because you had to press enter each time you issued a command. I found a library called Tkinter that allows you to use the wasd keys like if you where using a game but it required acces to the operating system's GUI. I used VNC to acces the Pi's GUI remotly from my laptop. After using it for a couple of minutes it looked like having to acces the GUI wasnt a good idea so I went back to SSH. I figured that sending one command at a time in 1 second intervals would be enough. It would make the machine learning easier to implement since it would make a prediction for a single photo in one second and not a constant video feed.
   The movement of the car is in the movement.py and car_movement.py files.
   
