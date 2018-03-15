@@ -11,12 +11,12 @@ from PIL import Image
 
 
 print("Wait please")
-p = 1
+i = 1
 camera.init()
 model = load_model('my_model.h5')
 print("Camera initialized, go ahead!")
 
-while p == 1:
+while i == 1:
     camera.take_picture_test()
     image = Image.open('test.jpg')
     image = np.array(image)
@@ -25,7 +25,7 @@ while p == 1:
     p=p[0]
     print(p)
 
-    p = input('')  # previously raw_input()
+    i = input('continue? 1 for yes')  # previously raw_input()
 
 camera.end()
 
