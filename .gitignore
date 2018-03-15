@@ -1,3 +1,6 @@
 *.pyc
 test_data.py
 turn_on.py
+my-venv
+my-venv/*
+
