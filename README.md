@@ -16,9 +16,10 @@
   
   The technologies and tools used were:
   
-   1.Raspberry Pi
-   2.Python
-   3.Tensor Flow
+   1. Raspberry Pi
+   2. Python
+   3. Tensor Flow
+   4. Keras
         
 ## Steps Taken
 ### 1. Build Car
@@ -30,15 +31,63 @@
   The movement of the car is in the movement.py and car_movement.py files.
   
   ### 3. Implement Camera
-   Using the propietary Pi's camera is very easy with all the libraries it that are available. I just had to create some functions to fit my needs which are in the camera.py file. The functions are used to initialize the camera, take a picture of the correct size and shutting down the camera.
+   Using the propietary Pi's camera is very easy with all the libraries that are available. I just had to create some functions to fit my needs which are in the camera.py file. The functions are used to initialize the camera, take a picture of the correct size and shutting down the camera.
       
  ### 4. Create Machine Learning Model
-   After a lot of research, reading and video watching I used [this tutorial](https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/#0) called TensorFlow for poets. It is made by google employees that work in TensorFlow. To train the model quickly I used a method called transfer learning in which you take a model that has already been trained and you retrain it to solve your particular problem.
- ### 5. Gather Training Data
-   To gather the test data I had to create 3 folder to create the 3 training classes forward(w), right(d) and left(a). For that I just took a picture and when I pressed the key for what the car should do the picture went to that folder and the car moved. All the code for that is in the car_train.py file.
- ### 6. Train Model
- ### 7. Test Car! 
-   When I first tested my model on the Raspberry Pi it took about 6 seconds to classify an image. It was too much since making a decicion each 6 seconds would allow the car to drive itself. I figured that in order to get the car working I had to get it under 2 seconds. After searching for a little bit I found this [thread](https://github.com/samjabrahams/tensorflow-on-raspberry-pi/issues/54) which explains how making a prediction can be very slow if you start a tensorflow session each time you need to make a prediction since setting everything up to make a prediction takes time. I chaged the car code to be inside the TensorFlow code and not the other way around. That reduce the time it takes to make a prediction from 6 seconds to about 1.6 which is less than the 2 seconds I wanted. 
-      
+   Learning about ML was the real goal behind building this proyect. I not only wanted to create a ML model but I also wanted to understand it. I took Andrew NG's machine learningn course and his deep learning specialization on coursera. The courses taught me a lot of theory about ML. In the courses I also learned to use Keras which allowed my to build a Neural Network with ease.  I used a simple NN that consisted of 3 layers. 2 convolutinal +  maxpooling layers and a fully connected layer.
+   
+```
+def cModel(input_shape):
 
+    X_input = Input(input_shape)
+
+    # CONV -> BN -> RELU Block applied to X_input
+    X = Conv2D(6, (6,6), strides=(1, 1), name='conv0', padding = 'same')(X_input)
+    X = BatchNormalization(axis=3, name='bn0')(X)
+    X = Activation('relu')(X)
+
+    # MAXPOOL
+    X = MaxPooling2D((2, 2), name='max_pool0')(X)
+
+    # CONV -> BN -> RELU Block applied to X
+    X = Conv2D(16, (5,5), strides=(1, 1), name='conv1', padding = 'valid')(X)
+    X = BatchNormalization(axis=3, name='bn1')(X)
+    X = Activation('relu')(X)
+
+    # MAXPOOL
+    X = MaxPooling2D((2, 2), name='max_pool1')(X)
+
+    # CONV -> BN -> RELU Block applied to X
+    X = Conv2D(8, (3, 3), strides=(1, 1), name='conv2', padding = 'valid')(X)
+    X = BatchNormalization(axis=3, name='bn2')(X)
+    X = Activation('relu')(X)
+
+    # MAXPOOL
+    X = MaxPooling2D((2, 2), name='max_pool2')(X)
+
+    # FLATTEN X (means convert it to a vector) + FULLYCONNECTED
+    X = Flatten()(X)
+    X = Dense(units=4, activation='sigmoid', name='fc')(X)
+
+
+    # Create model. This creates your Keras model instance, you'll use this instance to train/test the model.
+    model = Model(inputs=X_input, outputs=X, name='cModel')
+
+    return model
+
+
+```
+ ### 5. Gather Training Data
+   To gather the test data I had to create 3 folder to create the 3 training classes forward(w), right(d) and left(a). For that I just took a picture and when I pressed the key for what the car should do the picture went to that folder and the car moved. All the code for that is in the car_train.py file.  I had a total of about 2500 images to train and test.
+   Example train images:
+   ![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/a/19-06-2017_01:10:32.jpg)
+   ![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/w/12-03-2018_17:58:49.jpg)
+   ![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/d/15-03-2018_12:46:29.jpg)
+   
+ ### 6. Train Model
+ I tried different network architectures and hyper parameters. However they all seemed to work very well since its not a very complex problem. I ended up choosing the one that converged a bit faster. At the end the model was about 90% accurate on the training data and about 80% accurate on the test data. I think it was a good result since there are many images that could be classified into more than 1 category like a slight turn.
+ 
+ ### 7. Test Car! 
+   The car worked very well when I first tested. Every now and then it started to glitch and move randomly but that is mostly because of a bug in the camera which I wasnt able to fix. This is a video of the car in a track it had never seen before.
+   
 
