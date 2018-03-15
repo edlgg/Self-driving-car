@@ -11,13 +11,12 @@ from PIL import Image
 
 
 print("Wait please")
-p = 0
-tf = 2
+p = 1
 camera.init()
 model = load_model('my_model.h5')
 print("Camera initialized, go ahead!")
 
-while p != 3:
+while p == 1:
     camera.take_picture_test()
     image = Image.open('test.jpg')
     image = np.array(image)
@@ -26,15 +25,7 @@ while p != 3:
     p=p[0]
     print(p)
 
-    if p == 0:
-        movement.left(tf)
+    p = input('')  # previously raw_input()
 
-    elif p == 1:
-        movement.forward(tf)
-
-    elif p == 2:
-        movement.right(tf)
-
-    elif p == 3:
-        camera.end()
+camera.end()
 
