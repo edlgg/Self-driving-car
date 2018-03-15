@@ -24,6 +24,11 @@
 ## Steps Taken
 ### 1. Build Car
    At the beggining, after watching Ryan Zotti's [talk](https://www.youtube.com/watch?v=QbbOxrR0zdA&t=3355s) at PyData conference I decided to buy a remote controlled car and try to connect it to the Raspberry Pi. I ordered one from Amazon but I accidentally broke it. After that I decided to build the car myself. I found this [tutorial](https://www.youtube.com/watch?v=LlFkybEQFFA) on youtube which I modified to fit my needs. Instead of using several AA batteries I used a single 9V battery and made my car with a protoboard and cardboard. But it helped me understand how you can intereact with motors via the Raspberry Pi.
+   
+![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/README_images/20170605_223608.jpg)
+![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/README_images/20170607_205502.jpg)
+![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/README_images/20170616_201821.jpg)
+![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/README_images/20180310_194621.jpg)
  
 ### 2. Implement Car Movement
    Before starting this proyect I didnt know anything about the Raspberry Pi so I used [this Udemy course](https://www.udemy.com/from-0-to-1-raspberry-pi/learn/v4/overview) to learn how to use LED's, Proximity sensors, temperature sensors, etc. After I got used to the Pi I implemented the car movement. Since the GPIO pins on the PI are are digital (either 1 or 0) and sometimes I needed the motors to work at lower speeds I used pulse width modulation to more precisely control the movement of the car. PWM is when you decrease the duty cycle of the motor so it moves slower by turning it on and off very quickly in the proportions that you need. After that I just connected to my Pi via SSH to give the commands.
@@ -80,6 +85,7 @@ def cModel(input_shape):
  ### 5. Gather Training Data
    To gather the test data I had to create 3 folder to create the 3 training classes forward(w), right(d) and left(a). For that I just took a picture and when I pressed the key for what the car should do the picture went to that folder and the car moved. All the code for that is in the car_train.py file.  I had a total of about 2500 images to train and test.
    Example train images:
+   
    ![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/a/19-06-2017_01:10:32.jpg)
    ![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/w/12-03-2018_17:58:49.jpg)
    ![alt text](https://github.com/edlgg/Self-driving-car/blob/master/images/d/15-03-2018_12:46:29.jpg)
