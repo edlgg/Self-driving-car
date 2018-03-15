@@ -14,6 +14,7 @@ print("Wait please")
 p = 0
 tf = 2
 camera.init()
+movement_test.init()
 model = load_model('my_model.h5')
 print("Camera initialized, go ahead!")
 
