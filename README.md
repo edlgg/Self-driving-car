@@ -37,7 +37,7 @@
    Using the propietary Pi's camera is very easy with all the libraries that are available. I just had to create some functions to fit my needs which are in the camera.py file. The functions are used to initialize the camera, take a picture of the correct size and shutting down the camera.
       
  ### 4. Create Machine Learning Model
-   Learning about ML was the real goal behind building this proyect. I not only wanted to create a ML model but I also wanted to understand it. I took Andrew NG's machine learningn course and his deep learning specialization on coursera. The courses taught me a lot of theory about ML. In the courses I also learned to use Keras which allowed my to build a Neural Network with ease.  I used a simple NN that consisted of 3 layers. 2 convolutinal +  maxpooling layers and a fully connected layer.
+   Learning about ML was the real goal behind building this proyect. I not only wanted to create a ML model but I also wanted to understand it. I took Andrew NG's machine learningn course and his deep learning specialization on coursera. The courses taught me a lot of theory about ML. In the courses I also learned to use Keras which allowed my to build a Neural Network with ease.  I used a simple NN that consisted of 4 layers. 3 convolutinal +  maxpooling layers and a fully connected layer.
    
 ```
 def cModel(input_shape):
