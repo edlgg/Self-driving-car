@@ -1,5 +1,5 @@
 
-import movement
+import movement_test
 import camera
 import os
 
@@ -14,6 +14,7 @@ print("Wait please")
 p = 0
 tf = 2
 camera.init()
+movement_test.init()
 model = load_model('my_model.h5')
 print("Camera initialized, go ahead!")
 
@@ -24,17 +25,20 @@ while p != 3:
     p = model.predict(np.expand_dims(image, axis=0))
     p = np.argmax(p, axis = 1)
     p=p[0]
-    print(p)
 
     if p == 0:
-        movement.left(tf)
+        movement_test.left()
+        print("left")
 
     elif p == 1:
-        movement.forward(tf)
+        movement_test.forward()
+        print("forward")
 
     elif p == 2:
-        movement.right(tf)
+        movement_test.right()
+        print("right")
 
     elif p == 3:
+        movement_test.end()
         camera.end()
 
