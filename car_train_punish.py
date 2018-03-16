@@ -89,5 +89,6 @@ while p != 3:
         elif p == 3:
             movement.end()
             camera.end()
-    
+    print(8)
     camera.end()
+    print(9)
