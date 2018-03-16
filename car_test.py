@@ -23,6 +23,7 @@ while p != 3:
     image = Image.open('test.jpg')
     image = np.array(image)
     p = model.predict(np.expand_dims(image, axis=0))
+    print(p)
     p = np.argmax(p, axis = 1)
     p=p[0]
 
@@ -39,6 +40,7 @@ while p != 3:
         print("right")
 
     elif p == 3:
+        print("quit")
         movement_test.end()
         camera.end()
 
