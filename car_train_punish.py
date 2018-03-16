@@ -9,11 +9,6 @@ from keras.models import load_model
 from keras.models import Model
 from PIL import Image
 
-import sys
-sys.path.append('/home/pi/Documents/Self-driving-car')
-sys.path.append()
-sys.path.append()
-sys.path.append()
 
 print("Wait please")
 p = 3
