@@ -32,17 +32,17 @@ while correct != 'q':
 
     if correct == 'w':
         camera.take_picture()
-        os.rename("/home/pi/Documents/Self-driving-car/"+imageName, "home/pi/Documents/Self-driving-car/images/w/"+imageName)
+        os.rename(str("/home/pi/Documents/Self-driving-car/"+imageName), str("home/pi/Documents/Self-driving-car/images/test/"+imageName))
         movement.forward(tf)
 
     elif correct == 'd':
         camera.take_picture()
-        os.rename("/home/pi/Documents/Self-driving-car/"+imageName, "home/pi/Documents/Self-driving-car/images/d/"+imageName)
+        os.rename(str("/home/pi/Documents/Self-driving-car/"+imageName), str("home/pi/Documents/Self-driving-car/images/test/"+imageName))
         movement.right(tf)
 
     elif correct == 'a':
         camera.take_picture()
-        os.rename("/home/pi/Documents/Self-driving-car/"+imageName, "home/pi/Documents/Self-driving-car/images/a/"+imageName)
+        os.rename(str("/home/pi/Documents/Self-driving-car/"+imageName), str("home/pi/Documents/Self-driving-car/images/test/"+imageName))
         movement.left(tf)
 
     elif correct == 'q':
