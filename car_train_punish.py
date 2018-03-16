@@ -22,7 +22,7 @@ correct = 'w'
 while p != 3:
     os.chdir('/home/pi/Documents/Self-driving-car')
     print(1)
-    camera.take_picture()
+    camera.take_picture_test()
     print(2)
     image = Image.open('test.jpg')
     print(3)

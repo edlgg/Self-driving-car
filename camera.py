@@ -20,19 +20,15 @@ def end():
 
 def take_picture():
     current_date = (time.strftime("%d-%m-%Y"))
-    print('a')
     current_time = (time.strftime("%H:%M:%S"))
-    print('b')
     image_name = current_date + "_" + current_time + ".jpg"
-    print('c')
     camera.capture(image_name)
 
 
 def take_picture_test():
+    print('a')
     image_name = "test.jpg"
-    try:
-        camera.capture(image_name)
-    except Exception:
-        print("Ran into camera error")
-        camera.close()
-        camera.init()
+    print('b')
+    camera.capture(image_name)
+    print('c')
+
