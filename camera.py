@@ -25,8 +25,14 @@ def take_picture():
     camera.capture(image_name)
 
 
+def take_picture_return():
+    current_date = (time.strftime("%d-%m-%Y"))
+    current_time = (time.strftime("%H:%M:%S"))
+    image_name = current_date + "_" + current_time + ".jpg"
+    camera.capture(image_name)
+    return image_name
+
+
 def take_picture_test():
-    print('a')
-    camera.capture('test.jpg')
-    print('b')
+    camera.capture("test.jpg")
 
