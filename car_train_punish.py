@@ -37,7 +37,7 @@ while correct != 'q':
 
     elif correct == 'd':
         camera.take_picture()
-        os.rename(str("/home/pi/Documents/Self-driving-car/"+imageName), str("home/pi/Documents/Self-driving-car/images/test/"+imageName))
+        os.rename(str("~/Documents/Self-driving-car/"+imageName), str("~/Documents/Self-driving-car/images/test/"+imageName))
         movement.right(tf)
 
     elif correct == 'a':
@@ -47,5 +47,6 @@ while correct != 'q':
 
     elif correct == 'q':
         camera.end()
+        movement.end()
     
 

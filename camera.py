@@ -20,14 +20,14 @@ def end():
 
 def take_picture():
     current_date = (time.strftime("%d-%m-%Y"))
-    current_time = (time.strftime("%H:%M:%S"))
+    current_time = (time.strftime("%H-%M-%S"))
     image_name = current_date + "_" + current_time + ".jpg"
     camera.capture(image_name)
 
 
 def take_picture_return():
     current_date = (time.strftime("%d-%m-%Y"))
-    current_time = (time.strftime("%H:%M:%S"))
+    current_time = (time.strftime("%H-%M-%S"))
     image_name = current_date + "_" + current_time + ".jpg"
     camera.capture(image_name)
     return image_name
