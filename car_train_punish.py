@@ -13,7 +13,6 @@ from PIL import Image
 print("Wait please")
 p = 0
 tf = 1
-camera.init()
 movement.init()
 model = load_model('my_model.h5')
 print("Camera initialized, go ahead!")
@@ -23,6 +22,7 @@ while p != 3:
     os.chdir('/home/pi/Documents/Self-driving-car')
     print(1)
     camera.init()
+    print(1.5)
     camera.take_picture_test()
     print(2)
     image = Image.open('test.jpg')
@@ -89,3 +89,5 @@ while p != 3:
         elif p == 3:
             movement.end()
             camera.end()
+    
+    camera.end()
