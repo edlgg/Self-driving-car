@@ -21,9 +21,13 @@ correct = 'w'
 
 while p != 3:
     os.chdir('/home/pi/Documents/Self-driving-car')
+    print(1)
     camera.take_picture_test()
+    print(2)
     image = Image.open('test.jpg')
+    print(3)
     image = np.array(image)
+    print(4)
     p = model.predict(np.expand_dims(image, axis=0))
     print(p)
     p = np.argmax(p, axis = 1)
