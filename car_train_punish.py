@@ -13,14 +13,15 @@ from PIL import Image
 print("Wait please")
 p = 3
 tf = 1
+i=0
 camera.init()
 movement.init()
 model = load_model('my_model.h5')
 print("Camera initialized, go ahead!")
 correct = 'w'
 while correct != 'q':
-    imageName = camera.take_picture_return()
-    image = Image.open(imageName)
+    camera.take_picture()
+    image = Image.open('test.jpg')
     image = np.array(image)
     p = model.predict(np.expand_dims(image, axis=0))
     print(p)
@@ -28,25 +29,24 @@ while correct != 'q':
     p=p[0]
     print(p)
 
-    correct = input('Enter correct prediction')  # previously raw_input()
+    correct = input("Enter correct prediction")  # previously raw_input()
 
     if correct == 'w':
-        camera.take_picture()
-        os.rename(str("/home/pi/Documents/Self-driving-car/"+imageName), str("home/pi/Documents/Self-driving-car/images/test/"+imageName))
+        os.rename(str("/test.jpg"), str("/images/test/test"+str(i)+".jpg"))
         movement.forward(tf)
 
     elif correct == 'd':
-        camera.take_picture()
         os.rename(str("~/Documents/Self-driving-car/"+imageName), str("~/Documents/Self-driving-car/images/test/"+imageName))
         movement.right(tf)
 
     elif correct == 'a':
-        camera.take_picture()
         os.rename(str("/home/pi/Documents/Self-driving-car/"+imageName), str("home/pi/Documents/Self-driving-car/images/test/"+imageName))
         movement.left(tf)
 
     elif correct == 'q':
         camera.end()
         movement.end()
+    
+    i = i + 1
     
 

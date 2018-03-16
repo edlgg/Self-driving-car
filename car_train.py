@@ -14,18 +14,18 @@ while p == 0:
     if key_press == 'w':
         os.chdir('/home/pi/Documents/Self-driving-car/images/w')
         camera.take_picture()
-
         movement.forward(tf)
+        
     elif key_press == 'd':
         os.chdir('/home/pi/Documents/Self-driving-car/images/d')
         camera.take_picture()
-
         movement.right(tf)
+
     elif key_press == 'a':
         os.chdir('/home/pi/Documents/Self-driving-car/images/a')
         camera.take_picture()
-
         movement.left(tf)
+
     elif key_press == 'q':
         os.chdir('/home/pi/Documents/Self-driving-car/images/q')
         camera.take_picture()
