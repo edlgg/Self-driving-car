@@ -27,8 +27,6 @@ def take_picture():
 
 def take_picture_test():
     print('a')
-    image_name = "test.jpg"
+    camera.capture('test.jpg')
     print('b')
-    camera.capture(image_name)
-    print('c')
 

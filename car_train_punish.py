@@ -29,6 +29,7 @@ while p != 3:
     image = np.array(image)
     print(4)
     p = model.predict(np.expand_dims(image, axis=0))
+    print('****p')
     print(p)
     p = np.argmax(p, axis = 1)
     p=p[0]
